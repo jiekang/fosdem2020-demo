@@ -62,6 +62,21 @@ oc apply container-jfr-operator/bundle/openshift/operator-source.yaml
 
 Afterwards you can install the Operator through the cluster's OperatorHub, targeting the OpenShift project containing the Java applications.
 
+Once the Operator is installed, create a ContainerJFR instance with `minimal:false`, e.g.
+
+```
+apiVersion: rhjmc.redhat.com/v1alpha1
+kind: ContainerJFR
+metadata:
+  name: example
+  namespace: fosdem2020
+spec: {
+  minimal: false
+}
+```
+
 ## Jaeger via Operator
 
 Jaeger is available on the OperatorHub. Install the Operator (Red Hat version rather than community edition), targeting the OpenShift project containing the Java applications.
+
+Once the Operator is installed, create a Jaeger instance with the default jaeger-all-in-one-inmemory definition.
