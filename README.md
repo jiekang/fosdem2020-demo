@@ -26,14 +26,14 @@ To deploy these from quay.io images, run:
 oc new-app quay.io/jiekang/robotshop-customer-service --name=customer-service-1 \
 -e PORT=8081 \
 -e JAEGER_ENDPOINT=http://jaeger-all-in-one-inmemory-collector:14268/api/traces \
--e JAVA_OPTS="-Dcom.sun.management.jmxremote.port=9091 -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false -XX:+FlightRecorder -XX:FlightRecorderOptions=stackdepth=128 -XX:+UnlockDiagnosticVMOptions -XX:+DebugNonSafepoints -Djava.net.perferIPv4Stack=true -XX:StartFlightRecording=name=CustomerService,path-to-gc-roots=true,settings=profile,maxsize=128MB"
+-e JAVA_OPTS="-Dcom.sun.management.jmxremote.port=9091 -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false -XX:+FlightRecorder -XX:FlightRecorderOptions=stackdepth=128 -XX:+UnlockDiagnosticVMOptions -XX:+DebugNonSafepoints -Djava.net.preferIPv4Stack=true -XX:StartFlightRecording=name=CustomerService,path-to-gc-roots=true,settings=profile,maxsize=128MB"
 oc expose svc/customer-service-1
 
 // factory-service
 oc new-app quay.io/jiekang/robotshop-factory-service --name=factory-service-1 \
 -e PORT=8081 \
 -e JAEGER_ENDPOINT=http://jaeger-all-in-one-inmemory-collector:14268/api/traces \
--e "JAVA_OPTS=-Dcom.sun.management.jmxremote.port=9091 -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false -XX:+FlightRecorder -XX:FlightRecorderOptions=stackdepth=128 -XX:+UnlockDiagnosticVMOptions -XX:+DebugNonSafepoints -Djava.net.perferIPv4Stack=true -XX:StartFlightRecording=name=FactoryService,path-to-gc-roots=true,settings=profile,maxsize=128MB"
+-e "JAVA_OPTS=-Dcom.sun.management.jmxremote.port=9091 -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false -XX:+FlightRecorder -XX:FlightRecorderOptions=stackdepth=128 -XX:+UnlockDiagnosticVMOptions -XX:+DebugNonSafepoints -Djava.net.preferIPv4Stack=true -XX:StartFlightRecording=name=FactoryService,path-to-gc-roots=true,settings=profile,maxsize=128MB"
 oc expose svc/factory-service-1
 
 // order-service
@@ -42,7 +42,7 @@ oc new-app quay.io/jiekang/robotshop-order-service --name=order-service-1 \
 -e JAEGER_ENDPOINT=http://jaeger-all-in-one-inmemory-collector:14268/api/traces \
 -e CUSTOMER_SERVICE_LOCATION=http://customer-service-1-fosdem2020.apps-crc.testing \
 -e FACTORY_SERVICE_LOCATION=http://factory-service-1-fosdem2020.apps-crc.testing \
--e "JAVA_OPTS=-Dcom.sun.management.jmxremote.port=9091 -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false -XX:+FlightRecorder -XX:FlightRecorderOptions=stackdepth=128 -XX:+UnlockDiagnosticVMOptions -XX:+DebugNonSafepoints -Djava.net.perferIPv4Stack=true -XX:StartFlightRecording=name=OrderService,path-to-gc-roots=true,settings=profile,maxsize=128MB"
+-e "JAVA_OPTS=-Dcom.sun.management.jmxremote.port=9091 -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false -XX:+FlightRecorder -XX:FlightRecorderOptions=stackdepth=128 -XX:+UnlockDiagnosticVMOptions -XX:+DebugNonSafepoints -Djava.net.preferIPv4Stack=true -XX:StartFlightRecording=name=OrderService,path-to-gc-roots=true,settings=profile,maxsize=128MB"
 oc expose svc/order-service-1
 ```
 
